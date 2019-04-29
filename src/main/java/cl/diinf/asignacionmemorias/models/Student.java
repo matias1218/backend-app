@@ -1,4 +1,4 @@
-package cl.diinf.asignacionmemorias.model;
+package cl.diinf.asignacionmemorias.models;
 
 import lombok.Getter;
 import lombok.Setter;
