@@ -20,4 +20,11 @@ public class TeacherService {
     public List<Teacher> getTeachers(){
         return this.teacherRepository.findAll();
     }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Teacher createTeacher(@RequestBody Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
 }

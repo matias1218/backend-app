@@ -17,7 +17,14 @@ public class TopicService {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Topic> getTeachers(){
+    public List<Topic> getTopics(){
         return this.topicRepository.findAll();
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Topic createTopic(@RequestBody Topic topic) {
+        return topicRepository.save(topic);
     }
 }

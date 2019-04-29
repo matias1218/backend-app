@@ -17,7 +17,15 @@ public class UserService {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getTeachers(){
+    public List<User> getUsers(){
         return this.userRepository.findAll();
+    }
+
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public User createUser(@RequestBody User user) {
+        return userRepository.save(user);
     }
 }

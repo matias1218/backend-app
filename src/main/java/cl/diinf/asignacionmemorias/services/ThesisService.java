@@ -20,4 +20,11 @@ public class ThesisService {
     public List<Thesis> getTeachers(){
         return this.thesisRepository.findAll();
     }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Thesis createThesis(@RequestBody Thesis thesis) {
+        return thesisRepository.save(thesis);
+    }
 }

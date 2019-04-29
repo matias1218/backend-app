@@ -2,7 +2,6 @@ package cl.diinf.asignacionmemorias.services;
 
 import cl.diinf.asignacionmemorias.models.Program;
 import cl.diinf.asignacionmemorias.repositories.ProgramRepository;
-import cl.diinf.asignacionmemorias.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,4 +20,14 @@ public class ProgramService {
     public List<Program> getPrograms(){
         return this.programRepository.findAll();
     }
+
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Program createProgram(@RequestBody Program program) {
+        return programRepository.save(program);
+    }
+
+
 }
