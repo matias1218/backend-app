@@ -1,7 +1,9 @@
 package cl.diinf.asignacionmemorias.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name = "students")
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +35,10 @@ public class Student {
     private int income;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_user_fk"))
+    @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_student_fk"))
     private Program program;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="thesis_id")
+    private Thesis thesis;
 }

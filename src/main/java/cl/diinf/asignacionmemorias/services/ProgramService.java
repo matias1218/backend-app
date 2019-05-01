@@ -1,33 +1,24 @@
 package cl.diinf.asignacionmemorias.services;
 
+import cl.diinf.asignacionmemorias.dto.ProgramDAO;
 import cl.diinf.asignacionmemorias.models.Program;
-import cl.diinf.asignacionmemorias.repositories.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(value = "/programs")
-
+@Service
 public class ProgramService {
+
+    private ProgramDAO programDAO;
+
     @Autowired
-    private ProgramRepository programRepository;
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Program> getPrograms(){
-        return this.programRepository.findAll();
+    public ProgramService(ProgramDAO programDAO) {
+        this.programDAO = programDAO;
     }
 
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public Program createProgram(@RequestBody Program program) {
-        return programRepository.save(program);
+    public List<Program> getAllPrograms() {
+        return programDAO.findAll();
     }
-
-
 }
+
