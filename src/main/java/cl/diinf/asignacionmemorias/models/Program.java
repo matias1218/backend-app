@@ -1,7 +1,9 @@
 package cl.diinf.asignacionmemorias.models;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,6 +12,8 @@ import java.util.Set;
 @Table(name = "programs")
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 public class Program {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
