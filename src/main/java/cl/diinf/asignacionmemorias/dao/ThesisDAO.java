@@ -1,4 +1,4 @@
-package cl.diinf.asignacionmemorias.dto;
+package cl.diinf.asignacionmemorias.dao;
 
 import cl.diinf.asignacionmemorias.models.Thesis;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,7 @@
-package cl.diinf.asignacionmemorias.services;
+package cl.diinf.asignacionmemorias.controllers;
 
+import cl.diinf.asignacionmemorias.dao.StudentDAO;
 import cl.diinf.asignacionmemorias.models.Student;
-import cl.diinf.asignacionmemorias.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,21 +10,21 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/students")
 
-public class StudentService {
+public class StudentController {
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentDAO studentDAO;
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Student> getStudents(){
-        return this.studentRepository.findAll();
+        return this.studentDAO.findAll();
     }
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Student createStudent(@RequestBody Student student) {
-        return studentRepository.save(student);
+        return studentDAO.save(student);
     }
 }

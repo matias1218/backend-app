@@ -1,6 +1,6 @@
 package cl.diinf.asignacionmemorias.services;
 
-import cl.diinf.asignacionmemorias.dto.ProgramDAO;
+import cl.diinf.asignacionmemorias.dao.ProgramDAO;
 import cl.diinf.asignacionmemorias.models.Program;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

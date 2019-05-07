@@ -1,7 +1,7 @@
-package cl.diinf.asignacionmemorias.services;
+package cl.diinf.asignacionmemorias.controllers;
 
+import cl.diinf.asignacionmemorias.dao.TopicDAO;
 import cl.diinf.asignacionmemorias.models.Topic;
-import cl.diinf.asignacionmemorias.repositories.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,21 +10,21 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/topics")
 
-public class TopicService {
+public class TopicController {
     @Autowired
-    private TopicRepository topicRepository;
+    private TopicDAO topicDAO;
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Topic> getTopics(){
-        return this.topicRepository.findAll();
+        return this.topicDAO.findAll();
     }
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Topic createTopic(@RequestBody Topic topic) {
-        return topicRepository.save(topic);
+        return topicDAO.save(topic);
     }
 }
