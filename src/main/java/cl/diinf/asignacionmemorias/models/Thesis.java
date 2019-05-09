@@ -28,8 +28,8 @@ public class Thesis {
     private String description;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "teacher_id", foreignKey = @ForeignKey(name = "thesis_teachers_fk"))
-    private Teacher guide;
+    @JoinColumn(name = "professor_id", foreignKey = @ForeignKey(name = "thesis_professors_fk"))
+    private Professor guide;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
@@ -40,5 +40,9 @@ public class Thesis {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "thesis")
     private Set<Tracking> tracking;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="commission_id")
+    private Commission commission;
 
 }

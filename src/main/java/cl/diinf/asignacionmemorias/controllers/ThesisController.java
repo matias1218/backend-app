@@ -17,7 +17,7 @@ public class ThesisController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Thesis> getTeachers(){
+    public List<Thesis> getProfessors(){
         return this.thesisDAO.findAll();
     }
 

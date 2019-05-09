@@ -9,5 +9,5 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class TeacherDTO {
+public class ProfessorDTO {
 }

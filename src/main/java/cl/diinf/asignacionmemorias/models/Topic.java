@@ -25,10 +25,10 @@ public class Topic {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "teacher_topics",
+    @JoinTable(name = "professor_topics",
             joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "teacher_id", referencedColumnName = "id"))
-    private Set<Teacher> teachers;
+            inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
+    private Set<Professor> professors;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
     private Set<Thesis> theses;

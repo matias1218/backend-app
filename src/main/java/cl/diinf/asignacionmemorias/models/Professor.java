@@ -9,12 +9,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "professors")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Teacher {
+public class Professor {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -36,7 +36,7 @@ public class Teacher {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
-    @ManyToMany(mappedBy = "teachers")
+    @ManyToMany(mappedBy = "professors")
     private Set<Topic> specialties;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
@@ -44,6 +44,11 @@ public class Teacher {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
     private Set<Student> students;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "firstProfessor")
+    private Set<Commission> commissions;
+
+
 
 
     /*
