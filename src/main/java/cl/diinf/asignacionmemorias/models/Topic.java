@@ -1,11 +1,15 @@
 package cl.diinf.asignacionmemorias.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,11 +28,12 @@ public class Topic {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     @JoinTable(name = "professor_topics",
             joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
-    private Set<Professor> professors;
+    private List<Professor> professors = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
     private Set<Thesis> theses;

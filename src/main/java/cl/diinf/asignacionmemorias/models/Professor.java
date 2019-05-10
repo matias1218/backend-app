@@ -1,11 +1,15 @@
 package cl.diinf.asignacionmemorias.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,8 +40,10 @@ public class Professor {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
-    @ManyToMany(mappedBy = "professors")
-    private Set<Topic> specialties;
+
+    @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "professors")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    private List<Topic> topics = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
     private Set<Thesis> theses;
