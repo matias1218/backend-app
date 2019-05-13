@@ -19,6 +19,14 @@ VALUES
 ('Interacción Humano-Computadora'),
 ('Bioinformática');
 
+INSERT INTO programs
+(code, name)
+VALUES
+(1353, 'Ingeniería en Ejecución en Computación e Informática'),
+(1363, 'Ingeniería Civil en Informática');
+
+
+
 INSERT INTO professor_topics
 (topic_id, professor_id)
 VALUES

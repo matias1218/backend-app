@@ -20,5 +20,9 @@ public class ProgramService {
     public List<Program> getAllPrograms() {
         return programDAO.findAll();
     }
+
+    public Program getProgramByCode(int code){
+        return programDAO.getProgramByCode(code);
+    }
 }
 

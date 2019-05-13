@@ -34,11 +34,15 @@ public class Student {
     @Column(name = "year_income", nullable = false)
     private int income;
 
-    @ManyToOne(optional = false)
+    @ManyToOne()//optional = false)
     @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_student_fk"))
     private Program program;
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="thesis_id")
     private Thesis thesis;
+
+    public void assignThesis(Thesis thesis){
+        this.setThesis(thesis);
+    }
 }
