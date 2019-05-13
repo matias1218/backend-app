@@ -10,6 +10,8 @@
  - [ ] `service`: contiene los objetos que coordinan la lógica de datos entre `dao` y `controller`
  - [ ] `util`: contiene los objetos de utilidad miscelánea para el sistema.
 
+![estructura](https://i.ibb.co/6wjz0Bk/Diagrama-Estructura.png)
+
 ## Dependencias utilizadas
  - [Lombok:](https://projectlombok.org/) Biblioteca de anotaciones de Java que ayuda a reducir el código y el código repetido.
  - [Rest Repositories:](https://spring.io/projects/spring-data-rest) Para exponer los repositorios de `Spring Data` sobre `REST` a través de `Spring Data REST`.
@@ -18,3 +20,5 @@
  - [PostgreSQL](https://jdbc.postgresql.org/): Driver JDBC de PostgreSQL.
 
 ## Ejecución de software
+
+
