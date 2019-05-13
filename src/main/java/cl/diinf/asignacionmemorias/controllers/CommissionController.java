@@ -1,9 +1,7 @@
 package cl.diinf.asignacionmemorias.controllers;
 
 import cl.diinf.asignacionmemorias.dao.CommissionDAO;
-import cl.diinf.asignacionmemorias.dao.ProfessorDAO;
 import cl.diinf.asignacionmemorias.models.Commission;
-import cl.diinf.asignacionmemorias.models.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

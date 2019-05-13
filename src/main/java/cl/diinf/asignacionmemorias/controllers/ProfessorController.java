@@ -1,6 +1,6 @@
 package cl.diinf.asignacionmemorias.controllers;
 
-import cl.diinf.asignacionmemorias.dao.ProfessorDAO;
+import cl.diinf.asignacionmemorias.dao.TeacherDAO;
 import cl.diinf.asignacionmemorias.models.Professor;
 import cl.diinf.asignacionmemorias.models.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class ProfessorController {
     @Autowired
-    private ProfessorDAO professorDAO;
+    private TeacherDAO professorDAO;
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET)

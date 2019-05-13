@@ -12,4 +12,7 @@ public interface ProfessorDAO extends JpaRepository<Professor, Long> {
 
   @Query("SELECT p.topics FROM Professor p WHERE p.id = :id")
   Set<Topic> getTopicsByProfessor(@Param("id") Long id);
+
+  public Professor findProfessorById(Long id);
+
 }
