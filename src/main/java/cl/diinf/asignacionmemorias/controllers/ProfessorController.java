@@ -2,6 +2,7 @@ package cl.diinf.asignacionmemorias.controllers;
 
 import cl.diinf.asignacionmemorias.dao.ProfessorDAO;
 import cl.diinf.asignacionmemorias.models.Professor;
+import cl.diinf.asignacionmemorias.models.Thesis;
 import cl.diinf.asignacionmemorias.models.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +31,18 @@ public class ProfessorController {
         return professorDAO.save(professor);
     }
 
-      @CrossOrigin
+    @CrossOrigin
     @RequestMapping(value = "/{professorId}/topics", method = RequestMethod.GET )
     @ResponseBody
     public Set<Topic> getTopicsByProfessor(@PathVariable  Long professorId){
-
         return this.professorDAO.getTopicsByProfessor(professorId);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/{professorId}/theses", method = RequestMethod.GET )
+    @ResponseBody
+    public List<Thesis> getThesesByProfessor(@PathVariable  Long professorId){
+        return this.professorDAO.getThesesByProfessor(professorId);
     }
 
 }

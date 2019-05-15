@@ -36,5 +36,6 @@ public class Topic {
     private List<Professor> professors = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private Set<Thesis> theses;
 }

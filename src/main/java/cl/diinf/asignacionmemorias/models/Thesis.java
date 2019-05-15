@@ -1,5 +1,7 @@
 package cl.diinf.asignacionmemorias.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+
 public class Thesis {
 
     @Id
@@ -29,10 +31,12 @@ public class Thesis {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "professor_id", foreignKey = @ForeignKey(name = "thesis_professors_fk"))
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private Professor guide;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private Topic topic;
 
     @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis")
@@ -42,7 +46,7 @@ public class Thesis {
     private Set<Tracking> tracking;
 
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="commission_id")
+    @JoinColumn(name="commission_id", nullable = true)
     private Commission commission;
 
 }

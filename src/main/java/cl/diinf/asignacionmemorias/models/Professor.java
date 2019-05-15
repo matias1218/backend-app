@@ -17,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+
 public class Professor {
 
     @Id
@@ -46,7 +46,8 @@ public class Professor {
     private List<Topic> topics = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
-    private Set<Thesis> theses;
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    private List<Thesis> theses;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
     private Set<Student> students;
