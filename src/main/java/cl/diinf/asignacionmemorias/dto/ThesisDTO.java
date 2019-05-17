@@ -10,4 +10,8 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class ThesisDTO {
+    private String title;
+    private String description;
+    private String topic;
+    private String author;
 }

@@ -13,7 +13,7 @@ import java.util.Set;
 @RequestMapping(value = "/topics")
 
 public class TopicController {
-    @Autowired
+    /*@Autowired
     private TopicDAO topicDAO;
 
     @CrossOrigin
@@ -36,6 +36,6 @@ public class TopicController {
     public Set<Professor> getProfessorsByTopic(@PathVariable  Long topicId){
 
         return this.topicDAO.getProfessorsByTopic(topicId);
-    }
+    }*/
 
 }

@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/student")
@@ -37,6 +36,17 @@ public class StudentController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public ResponseEntity getStudents() {
+        try {
+            return new ResponseEntity<>(studentService.getAll(), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/assign")
     public ResponseEntity assignThesis(@RequestParam("studentId") int studentId, @RequestParam("thesisId") int thesisId){
         try{
@@ -47,18 +57,4 @@ public class StudentController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
-/*    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Student> getStudents(){
-        return this.studentDAO.findAll();
-    }
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public Student createStudent(@RequestBody Student student) {
-        return studentDAO.save(student);
-    }*/
 }

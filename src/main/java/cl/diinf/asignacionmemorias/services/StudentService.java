@@ -9,7 +9,9 @@ import cl.diinf.asignacionmemorias.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -32,7 +34,7 @@ public class StudentService {
         return studentDAO.findStudentById(studentId);
     }
 
-    public boolean assignThesis(Long studentId, Long thesisId){
+    public boolean assignThesis(Long studentId, Long thesisId) {
         try{
             Student student = studentDAO.findById(studentId).orElseThrow(() -> new RuntimeException("Student not found"));
             student.setThesis(thesisService.getThesisById(thesisId));
@@ -47,7 +49,7 @@ public class StudentService {
         }
     }
 
-    public StudentDTO createStudent(NewStudentDTO newStudentDTO){
+    public StudentDTO createStudent(NewStudentDTO newStudentDTO) {
         try{
             Student student = new StudentMapper().fromNewStudentDTO(newStudentDTO);
             student.setProgram(this.programService.getProgramByCode(newStudentDTO.getCodeProgram()));
@@ -59,6 +61,15 @@ public class StudentService {
         }
         catch (Exception e)
         {
+            throw e;
+        }
+    }
+
+    public List<StudentDTO> getAll() {
+        try {
+            return  studentDAO.findAll().stream().map(x-> new StudentMapper().toStudentDTO(x)).collect(Collectors.toList());
+        }
+        catch (Exception e) {
             throw e;
         }
     }
