@@ -30,11 +30,6 @@ public class Thesis {
     private String description;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "professor_id", foreignKey = @ForeignKey(name = "thesis_professors_fk"))
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private Professor guide;
-
-    @ManyToOne(optional = false)
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     private Topic topic;
@@ -45,8 +40,20 @@ public class Thesis {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "thesis")
     private Set<Tracking> tracking;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="commission_id", nullable = true)
-    private Commission commission;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "guide_id", foreignKey = @ForeignKey(name = "thesis_professors_fk"))
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    private Professor guide;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "professor_c1_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    private Professor commissionFirst;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "professor_c2_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    private Professor commissionSecond;
+
 
 }

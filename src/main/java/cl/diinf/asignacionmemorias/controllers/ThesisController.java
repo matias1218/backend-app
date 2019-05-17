@@ -2,16 +2,34 @@ package cl.diinf.asignacionmemorias.controllers;
 
 import cl.diinf.asignacionmemorias.dao.ThesisDAO;
 import cl.diinf.asignacionmemorias.models.Thesis;
+import cl.diinf.asignacionmemorias.services.ThesisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
-@RequestMapping(value = "/theses")   // (asi se dice el plural de tesis en ingles xd)
-
+@RequestMapping(value = "/theses")
+@CrossOrigin
 public class ThesisController {
+    private final ThesisService thesisService;
+
     @Autowired
+    public ThesisController(ThesisService thesisService) {
+        this.thesisService = thesisService;
+    }
+
+    /*@RequestMapping(method = RequestMethod.GET, path = "{thesisId}/assign/{professorId}")
+    @ResponseBody
+    public ResponseEntity assignToProfessor(@PathVariable Long thesisId, @PathVariable Long professorId) {
+        if(this.thesisService) {
+
+        }
+
+    }*/
+
+    /*@Autowired
     private ThesisDAO thesisDAO;
 
     @CrossOrigin
@@ -25,6 +43,5 @@ public class ThesisController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Thesis createThesis(@RequestBody Thesis thesis) {
-        return thesisDAO.save(thesis);
-    }
+        return thesisDAO.save(thesis);*/
 }

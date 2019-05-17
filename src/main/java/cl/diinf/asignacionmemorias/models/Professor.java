@@ -52,12 +52,6 @@ public class Professor {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
     private Set<Student> students;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "firstProfessor")
-    private Set<Commission> commissions;
-
-
-
-
     /*
     private Set<Thesis> incorrection;
 
