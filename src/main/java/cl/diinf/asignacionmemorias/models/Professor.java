@@ -6,15 +6,16 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "professors")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Teacher {
+public class Professor {
 
     @Id
     @Column(name = "id", unique = true, nullable = false)
@@ -36,15 +37,25 @@ public class Teacher {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
-    @ManyToMany(mappedBy = "teachers")
-    private Set<Topic> specialties;
+    @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "professors")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Topic> topics = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
-    private Set<Thesis> theses;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Thesis> theses = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
-    private Set<Student> students;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionFirst")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Thesis> commision1 = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionSecond")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Thesis> commision2 = new HashSet<>();
 
     /*
     private Set<Thesis> incorrection;

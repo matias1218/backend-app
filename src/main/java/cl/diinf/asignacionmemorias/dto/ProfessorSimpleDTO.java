@@ -9,7 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class ProgramDTO {
+public class ProfessorSimpleDTO {
+    private long id;
     private String name;
-    private int code;
+    private String email;
+    private boolean academic;
 }

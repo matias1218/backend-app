@@ -27,5 +27,7 @@ public class Program {
     private int code;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Student> students;
 }

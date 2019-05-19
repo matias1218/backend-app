@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,18 +28,27 @@ public class Thesis {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "teacher_id", foreignKey = @ForeignKey(name = "thesis_teachers_fk"))
-    private Teacher guide;
+    @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis", cascade = CascadeType.ALL, optional = false)
+    private Student student;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
     private Topic topic;
 
-    @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis")
-    private Student student;
+    @OneToMany(mappedBy = "thesis")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Tracking> tracking = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "thesis")
-    private Set<Tracking> tracking;
+    @ManyToOne
+    @JoinColumn(name = "professor_guide_id", updatable = false, nullable = false, foreignKey = @ForeignKey(name = "thesis_guide_fk"))
+    private Professor guide;
 
+    @ManyToOne
+    @JoinColumn(name = "professor_c1_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_commisionfirst_fk"))
+    private Professor commissionFirst;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_c2_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_commissionsecond_fk"))
+    private Professor commissionSecond;
 }
