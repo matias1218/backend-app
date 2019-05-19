@@ -24,15 +24,16 @@
 Consultar a `23.20.84.8:9090`
 
 | path | tipo | descripción |
-|--|--|--|--|
+|--|--|--|
 | `students/create` | POST | Crea un estudiante dentro de la base de datos. Devuelve al estudiante recién creado. Ver [1] para ver cómo funciona los argumentos del post. |
 | `students/all`| GET| Devuelve una lista todos los estudiantes de la base de datos. |
-| `students/{studentId}/assign/{professorId}`|GET| Asigna a la tesis del estudiante el profesor, dado sus ids. Devuelve booleano que indica si se pudo realizar la asignación.
+| `students/{studentId}/assign/{professorId}`|GET| Asigna a la tesis del estudiante el profesor, dado sus ids. Devuelve booleano que indica si se pudo realizar la asignación.|
 | `professors/all` | GET | Devuelve una lista todos los profesores de la base de datos |
 | `professors/topic/{topicId}` | GET| Devuelve un listado de los profesores asociados a un tema en particular |
 |`theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
 |`theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
 |`theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
+
 
 
 
