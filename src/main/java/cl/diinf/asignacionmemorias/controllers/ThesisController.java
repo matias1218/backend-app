@@ -1,17 +1,16 @@
 package cl.diinf.asignacionmemorias.controllers;
 
-import cl.diinf.asignacionmemorias.dao.ThesisDAO;
-import cl.diinf.asignacionmemorias.models.Thesis;
 import cl.diinf.asignacionmemorias.services.ThesisService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
 
 @RestController
 @RequestMapping(value = "/theses")
 @CrossOrigin
+@Slf4j
 public class ThesisController {
     private final ThesisService thesisService;
 
@@ -20,28 +19,20 @@ public class ThesisController {
         this.thesisService = thesisService;
     }
 
-    /*@RequestMapping(method = RequestMethod.GET, path = "{thesisId}/assign/{professorId}")
-    @ResponseBody
-    public ResponseEntity assignToProfessor(@PathVariable Long thesisId, @PathVariable Long professorId) {
-        if(this.thesisService) {
-
+    @RequestMapping(method = RequestMethod.GET, path = "/{thesisId}/assign/{professorId}")
+    public void assignToProfessor(@PathVariable Long thesisId, @PathVariable Long professorId) {
+        log.error("klñkljj" + thesisId + professorId);
+        boolean a = this.thesisService.assignComission(professorId, thesisId);
+        /*try {
+            if(this.thesisService.assignComission((long)professorId, (long)thesisId)) {
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(false, HttpStatus.CONFLICT);
         }
-
-    }*/
-
-    /*@Autowired
-    private ThesisDAO thesisDAO;
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Thesis> getProfessors(){
-        return this.thesisDAO.findAll();
+        catch (Exception e)
+        {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }*/
     }
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public Thesis createThesis(@RequestBody Thesis thesis) {
-        return thesisDAO.save(thesis);*/
 }

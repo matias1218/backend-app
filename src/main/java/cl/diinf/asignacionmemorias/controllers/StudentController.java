@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/student")
+@RequestMapping(value = "/students")
+@CrossOrigin
 @Slf4j
 public class StudentController {
 
@@ -39,7 +40,7 @@ public class StudentController {
     @RequestMapping(method = RequestMethod.GET, value = "/all")
     public ResponseEntity getStudents() {
         try {
-            return new ResponseEntity<>(studentService.getAll(), HttpStatus.OK);
+            return new ResponseEntity<>(this.studentService.getAll(), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);

@@ -1,6 +1,5 @@
 package cl.diinf.asignacionmemorias.controllers;
 
-import cl.diinf.asignacionmemorias.models.Thesis;
 import cl.diinf.asignacionmemorias.services.ProfessorService;
 import cl.diinf.asignacionmemorias.services.ThesisService;
 import cl.diinf.asignacionmemorias.services.TopicService;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/professor")
+@RequestMapping(value = "/professors")
 @Slf4j
 public class ProfessorController {
 
@@ -38,7 +37,7 @@ public class ProfessorController {
         }
     }
 
-    @RequestMapping(value = "/{professorId}/topics", method = RequestMethod.GET )
+    /*@RequestMapping(value = "/{professorId}/topics", method = RequestMethod.GET )
     @ResponseBody
     public ResponseEntity getTopicsByProfessor(@PathVariable Long professorId){
         try {
@@ -51,7 +50,7 @@ public class ProfessorController {
         }
     }
 
-    @RequestMapping(value = "/{professorId}/theses", method = RequestMethod.GET )
+    /*@RequestMapping(value = "/{professorId}/theses", method = RequestMethod.GET )
     @ResponseBody
     public ResponseEntity getThesesByProfessor(@PathVariable Long professorId)
     {
@@ -63,5 +62,5 @@ public class ProfessorController {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 }

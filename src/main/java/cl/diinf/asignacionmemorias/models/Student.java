@@ -34,7 +34,7 @@ public class Student {
     @Column(name = "year_income", nullable = false)
     private int income;
 
-    @ManyToOne()//optional = false)
+    @ManyToOne()
     @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_student_fk"))
     private Program program;
 

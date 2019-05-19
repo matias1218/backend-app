@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-
+@EqualsAndHashCode
 public class Professor {
 
     @Id
@@ -40,17 +41,23 @@ public class Professor {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
-
     @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "professors")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private List<Topic> topics = new ArrayList<>();
+    private Set<Topic> topics = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private List<Thesis> theses;
+    private Set<Thesis> theses = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
-    private Set<Student> students;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionFirst")
+    private Set<Thesis> commision1 = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionSecond")
+    private Set<Thesis> commision2 = new HashSet<>();
+
+
+    /*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
+    private Set<Student> students;*/
+
+
 
     /*
     private Set<Thesis> incorrection;

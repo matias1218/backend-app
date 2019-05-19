@@ -15,5 +15,6 @@ public class StudentDTO {
     private String lastname2;
     private String email;
     private int income;
-    private ProgramDTO program;
+    private String program;
+    //private ThesisDTO thesis;
 }

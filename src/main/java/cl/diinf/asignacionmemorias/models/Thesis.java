@@ -1,21 +1,21 @@
 package cl.diinf.asignacionmemorias.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "theses")
 @Getter
 @Setter
 @ToString
-
+@EqualsAndHashCode
 public class Thesis {
 
     @Id
@@ -29,31 +29,25 @@ public class Thesis {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private Topic topic;
-
-    @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis")
+    @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis", cascade = CascadeType.ALL, optional = false)
     private Student student;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "thesis")
-    private Set<Tracking> tracking;
-
     @ManyToOne(optional = false)
-    @JoinColumn(name = "guide_id", foreignKey = @ForeignKey(name = "thesis_professors_fk"))
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    @JoinColumn(name = "topic_id", foreignKey = @ForeignKey(name = "thesis_topics_fk"))
+    private Topic topic;
+
+    @OneToMany(mappedBy = "thesis")
+    private Set<Tracking> tracking = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "professor_guide_id", updatable = false, nullable = false, foreignKey = @ForeignKey(name = "thesis_guide_fk"))
     private Professor guide;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "professor_c1_id")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    @ManyToOne
+    @JoinColumn(name = "professor_c1_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_commisionfirst_fk"))
     private Professor commissionFirst;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "professor_c2_id")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+    @ManyToOne
+    @JoinColumn(name = "professor_c2_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_commissionsecond_fk"))
     private Professor commissionSecond;
-
-
 }

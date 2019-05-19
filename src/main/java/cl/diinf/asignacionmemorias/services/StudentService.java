@@ -1,7 +1,6 @@
 package cl.diinf.asignacionmemorias.services;
 
 import cl.diinf.asignacionmemorias.dao.StudentDAO;
-import cl.diinf.asignacionmemorias.dao.ThesisDAO;
 import cl.diinf.asignacionmemorias.dto.NewStudentDTO;
 import cl.diinf.asignacionmemorias.dto.StudentDTO;
 import cl.diinf.asignacionmemorias.mapper.StudentMapper;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +35,7 @@ public class StudentService {
     public boolean assignThesis(Long studentId, Long thesisId) {
         try{
             Student student = studentDAO.findById(studentId).orElseThrow(() -> new RuntimeException("Student not found"));
-            student.setThesis(thesisService.getThesisById(thesisId));
+            //student.setThesis(thesisService.getThesisById(thesisId));
             if(student.getThesis() != null) {
                 studentDAO.saveAndFlush(student);
                 return true;
@@ -67,7 +65,7 @@ public class StudentService {
 
     public List<StudentDTO> getAll() {
         try {
-            return  studentDAO.findAll().stream().map(x-> new StudentMapper().toStudentDTO(x)).collect(Collectors.toList());
+            return studentDAO.findAll().stream().map(x-> new StudentMapper().toStudentDTO(x)).collect(Collectors.toList());
         }
         catch (Exception e) {
             throw e;

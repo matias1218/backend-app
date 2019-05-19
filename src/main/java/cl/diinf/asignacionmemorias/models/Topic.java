@@ -8,8 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,9 +32,8 @@ public class Topic {
     @JoinTable(name = "professor_topics",
             joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
-    private List<Professor> professors = new ArrayList<>();
+    private Set<Professor> professors = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private Set<Thesis> theses;
+    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
+    //private Set<Thesis> theses = new HashSet<>();
 }

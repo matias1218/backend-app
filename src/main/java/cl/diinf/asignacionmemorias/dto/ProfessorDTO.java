@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import java.util.List;
 
 @Getter
 @Setter
@@ -16,5 +15,5 @@ public class ProfessorDTO {
     private String lastname2;
     private String email;
     private boolean academic;
-    private List<TopicDTO> topics;
+    //private List<TopicDTO> topics;
 }

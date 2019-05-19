@@ -15,7 +15,7 @@ public class ProfessorMapper {
         professorDTO.setLastname1(professor.getLastname1());
         professorDTO.setLastname2(professor.getLastname2());
         professorDTO.setName(professor.getName());
-        professorDTO.setTopics(professor.getTopics().stream().map(x -> new TopicMapper().toTopicSimpleDTO(x)).collect(Collectors.toList()));
+        //professorDTO.setTopics(professor.getTopics().stream().map(x -> new TopicMapper().toTopicSimpleDTO(x)).collect(Collectors.toList()));
         return professorDTO;
     }
 }

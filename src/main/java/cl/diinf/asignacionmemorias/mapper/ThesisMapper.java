@@ -7,8 +7,8 @@ public class ThesisMapper {
     public ThesisDTO toThesisDTO(Thesis thesis) {
         ThesisDTO thesisDTO = new ThesisDTO();
         thesisDTO.setTitle(thesis.getTitle());
-        thesisDTO.setTopic(thesis.getTopic().getName());
-        thesisDTO.setAuthor(thesis.getStudent().getName() +" "+ thesis.getStudent().getLastname1() +" "+ thesis.getStudent().getLastname2());
+        thesisDTO.setDescription(thesis.getDescription());
+        //thesisDTO.setTopic(thesis.getTopic().getName());
         return thesisDTO;
     }
 }

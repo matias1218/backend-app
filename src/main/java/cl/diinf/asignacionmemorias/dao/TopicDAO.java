@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface TopicDAO extends JpaRepository<Topic, Long> {
 
-    @Query("SELECT p.topics FROM Professor p WHERE p.id = :id")
-    List<Topic> findTopicsByProfessorId(@Param("id") Long id);
+    //@Query("SELECT p.topics FROM Professor p WHERE p.id = :id")
+    //List<Topic> findTopicsByProfessorId(@Param("id") Long id);
 }

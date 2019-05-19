@@ -13,5 +13,4 @@ public class ThesisDTO {
     private String title;
     private String description;
     private String topic;
-    private String author;
 }

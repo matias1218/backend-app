@@ -1,5 +1,4 @@
 package cl.diinf.asignacionmemorias.mapper;
-
 import cl.diinf.asignacionmemorias.dto.NewStudentDTO;
 import cl.diinf.asignacionmemorias.dto.StudentDTO;
 import cl.diinf.asignacionmemorias.models.Student;
@@ -24,7 +23,8 @@ public class StudentMapper {
         studentDTO.setLastname2(student.getLastname2());
         studentDTO.setEmail(student.getEmail());
         studentDTO.setIncome(student.getIncome());
-        studentDTO.setProgram(new ProgramMapper().toProgramDTO(student.getProgram()));
+        studentDTO.setProgram(student.getProgram().getName());
+        //studentDTO.setThesis(new ThesisMapper().toThesisDTO(student.getThesis()));
         return studentDTO;
     }
 }

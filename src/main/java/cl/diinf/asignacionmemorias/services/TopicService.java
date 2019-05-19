@@ -19,7 +19,7 @@ public class TopicService {
         this.topicDAO = topicDAO;
     }
 
-    public List<TopicDTO> getByProfessorId(Long professorId) {
+    /*public List<TopicDTO> getByProfessorId(Long professorId) {
         try {
             return this.topicDAO.findTopicsByProfessorId(professorId).stream().map(x-> new TopicMapper().toTopicSimpleDTO(x)).collect(Collectors.toList());
         }
@@ -27,5 +27,5 @@ public class TopicService {
         {
             throw e;
         }
-    }
+    }*/
 }

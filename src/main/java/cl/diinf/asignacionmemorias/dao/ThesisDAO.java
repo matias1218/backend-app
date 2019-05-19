@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface ThesisDAO extends JpaRepository<Thesis, Long> {
 
-    @Query("SELECT p.theses FROM Professor p WHERE p.id = :id")
-    List<Thesis> findThesesByProfessorId(@Param("id") Long id);
+    /*@Query("SELECT p.theses FROM Professor p WHERE p.id = :id")
+    List<Thesis> findThesesByProfessorId(@Param("id") Long id);*/
+
+    Thesis findThesisById(Long id);
 }
