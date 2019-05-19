@@ -78,7 +78,7 @@ public class StudentService {
         }
     }
 
-    public boolean assignCommisision(Long studentId, Long professorId) {
+    public boolean assignCommission(Long studentId, Long professorId) {
         try {
             Student student = this.getStudentById(studentId);
             Professor professor = this.professorDAO.findById(professorId).orElseThrow(()-> new RuntimeException("Professor not found"));

@@ -27,4 +27,13 @@ public class ProfessorService {
             throw e;
         }
     }
+
+    public List<ProfessorDTO> getProffessorsByTopicId(Long topicId) {
+        try {
+            return professorDAO.findProfessorsByTopicId(topicId).stream().map(x-> new ProfessorMapper().toProfessorDTO(x)).collect(Collectors.toList());
+        }
+        catch (Exception e) {
+            throw e;
+        }
+    }
 }

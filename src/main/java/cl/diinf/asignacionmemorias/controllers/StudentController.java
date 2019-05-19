@@ -52,7 +52,7 @@ public class StudentController {
     @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/assign/{professorId}")
     public ResponseEntity assignComission(@PathVariable Long studentId, @PathVariable Long professorId) {
         try {
-            return new ResponseEntity<>(this.studentService.assignCommisision(studentId, professorId), HttpStatus.OK);
+            return new ResponseEntity<>(this.studentService.assignCommission(studentId, professorId), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);

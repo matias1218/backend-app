@@ -1,15 +1,13 @@
 package cl.diinf.asignacionmemorias.dao;
 
-import cl.diinf.asignacionmemorias.models.Professor;
 import cl.diinf.asignacionmemorias.models.Thesis;
-import cl.diinf.asignacionmemorias.models.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface ThesisDAO extends JpaRepository<Thesis, Long> {
-    List<Thesis> findByGuide(Professor professor);
-    List<Thesis> findByGuide_NameAndGuide_Lastname1(String name, String lastname);
-    List<Thesis> findByTopic(Topic topic);
-    List<Thesis> findByTopic_Name(String name);
+    @Query("SELECT p.theses FROM Professor p WHERE p.id = :id")
+    List<Thesis> findThesesByProfessorId(@Param("id") Long id);
 }
