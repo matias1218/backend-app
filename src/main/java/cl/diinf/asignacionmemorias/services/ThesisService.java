@@ -1,7 +1,6 @@
 package cl.diinf.asignacionmemorias.services;
 
 import cl.diinf.asignacionmemorias.dao.ThesisDAO;
-import cl.diinf.asignacionmemorias.dto.NewThesisDTO;
 import cl.diinf.asignacionmemorias.dto.ThesisDTO;
 import cl.diinf.asignacionmemorias.mapper.ThesisMapper;
 import cl.diinf.asignacionmemorias.models.Thesis;
@@ -29,15 +28,22 @@ public class ThesisService {
 
     public List<ThesisDTO> getAllTheses()
     {
-        return thesisDAO.findAll().stream().map(x -> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList());
+        try {
+            return thesisDAO.findAll().stream().map(x -> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList());
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+
     }
 
-    public ThesisDTO createThesis(NewThesisDTO newThesisDTO) {
+    /*public ThesisDTO createThesis(NewThesisDTO newThesisDTO) {
         Thesis thesis = new ThesisMapper().fromNewThesisDTO(newThesisDTO);
         thesis.setStudent(studentService.getStudentById(newThesisDTO.getStudentId()));
         //thesis.setGuide(teacherService.getTeacherById(newThesisDTO.getTeacherId()));
         //thesis.setTopic(topicService.getTopicById(newThesisDTO.getTopicId()));
         return new ThesisMapper().toThesisDTO(thesis);
-    }
+    }*/
 
 }

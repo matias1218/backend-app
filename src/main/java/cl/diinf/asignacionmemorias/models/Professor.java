@@ -1,15 +1,12 @@
 package cl.diinf.asignacionmemorias.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -40,23 +37,23 @@ public class Professor {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
-
     @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "professors")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-    private List<Topic> topics = new ArrayList<>();
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Topic> topics = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "guide")
-    private Set<Thesis> theses;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Thesis> theses = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "program")
-    private Set<Student> students;
+    /*
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionFirst")
+    private Set<Thesis> commision1 = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "firstProfessor")
-    private Set<Commission> commissions;
-
-
-
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionSecond")
+    private Set<Thesis> commision2 = new HashSet<>();
+    */
     /*
     private Set<Thesis> incorrection;
 

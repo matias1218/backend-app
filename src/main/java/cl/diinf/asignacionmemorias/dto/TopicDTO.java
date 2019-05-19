@@ -10,4 +10,6 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class TopicDTO {
+    private Long id;
+    private String name;
 }

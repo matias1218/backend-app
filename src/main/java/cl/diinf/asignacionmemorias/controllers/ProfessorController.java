@@ -1,41 +1,35 @@
 package cl.diinf.asignacionmemorias.controllers;
 
-import cl.diinf.asignacionmemorias.dao.TeacherDAO;
-import cl.diinf.asignacionmemorias.models.Professor;
-import cl.diinf.asignacionmemorias.models.Topic;
+import cl.diinf.asignacionmemorias.services.ProfessorService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Set;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/professors")
-
+@Slf4j
 public class ProfessorController {
+    private final ProfessorService professorService;
+
     @Autowired
-    private TeacherDAO professorDAO;
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Professor> getProfessors(){
-        return this.professorDAO.findAll();
+    public ProfessorController(ProfessorService professorService) {
+        this.professorService = professorService;
     }
 
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public Professor createProfessor(@RequestBody Professor professor) {
-        return professorDAO.save(professor);
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public ResponseEntity getStudents() {
+        try {
+            return new ResponseEntity<>(professorService.getAllProfessors(), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
-
-      @CrossOrigin
-    @RequestMapping(value = "/{professorId}/topics", method = RequestMethod.GET )
-    @ResponseBody
-    public Set<Topic> getTopicsByProfessor(@PathVariable  Long professorId){
-
-        return this.professorDAO.getTopicsByProfessor(professorId);
-    }
-
 }

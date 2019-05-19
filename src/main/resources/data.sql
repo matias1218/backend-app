@@ -25,8 +25,6 @@ VALUES
 (1353, 'Ingeniería en Ejecución en Computación e Informática'),
 (1363, 'Ingeniería Civil en Informática');
 
-
-
 INSERT INTO professor_topics
 (topic_id, professor_id)
 VALUES
@@ -34,3 +32,14 @@ VALUES
 (1,2),
 (4,3);
 
+
+INSERT INTO theses
+(description, title, professor_guide_id, topic_id)
+VALUES
+('Descripcion...', 'El titulo', 1, 1);
+
+
+INSERT INTO students
+(email, year_income, lastname_1, lastname_2, name, program_id, thesis_id)
+VALUES
+('pico', 2015, 'arredondo', 'contreras', 'javier', 1, 1);

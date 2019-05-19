@@ -29,12 +29,15 @@ public class Topic {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
     @JoinTable(name = "professor_topics",
             joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id", referencedColumnName = "id"))
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Professor> professors = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "topic")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Thesis> theses;
 }

@@ -34,13 +34,20 @@ public class Student {
     @Column(name = "year_income", nullable = false)
     private int income;
 
-    @ManyToOne()//optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_student_fk"))
     private Program program;
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="thesis_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Thesis thesis;
+
+    public void addProgram(Program program) {
+        this.setProgram(program);
+        program.getStudents().add(this);
+    }
 
     public void assignThesis(Thesis thesis){
         this.setThesis(thesis);

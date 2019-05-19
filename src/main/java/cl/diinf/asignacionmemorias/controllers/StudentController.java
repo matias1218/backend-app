@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/student")
+@RequestMapping(value = "/students")
 @Slf4j
+@CrossOrigin
 public class StudentController {
 
     private StudentService studentService;
@@ -26,7 +27,7 @@ public class StudentController {
     @RequestMapping(method = RequestMethod.POST, value = "/create")
     public ResponseEntity createStudent(@RequestBody NewStudentDTO newStudentDTO){
         try{
-            StudentDTO studentDTO = studentService.createStudent(newStudentDTO);
+            StudentDTO studentDTO = this.studentService.createStudent(newStudentDTO);
             if(studentDTO != null)
                 return new ResponseEntity<>(studentDTO, HttpStatus.CREATED);
             return  new ResponseEntity<>("Code program not exists or student already in database", HttpStatus.BAD_REQUEST);
@@ -37,7 +38,28 @@ public class StudentController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/assign")
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public ResponseEntity getStudents() {
+        try {
+            return new ResponseEntity<>(this.studentService.getAllStudents(), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/assign/{professorId}")
+    public ResponseEntity assignComission(@PathVariable Long studentId, @PathVariable Long professorId) {
+        try {
+            return new ResponseEntity<>(this.studentService.assignCommisision(studentId, professorId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+    /*@RequestMapping(method = RequestMethod.POST, value = "/assign")
     public ResponseEntity assignThesis(@RequestParam("studentId") int studentId, @RequestParam("thesisId") int thesisId){
         try{
             return new ResponseEntity<>(studentService.assignThesis((long)studentId, (long)thesisId), HttpStatus.OK);
@@ -46,19 +68,5 @@ public class StudentController {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-    }
-
-/*    @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Student> getStudents(){
-        return this.studentDAO.findAll();
-    }
-
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public Student createStudent(@RequestBody Student student) {
-        return studentDAO.save(student);
     }*/
 }
