@@ -47,13 +47,16 @@ public class Professor {
     @EqualsAndHashCode.Exclude
     private Set<Thesis> theses = new HashSet<>();
 
-    /*
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionFirst")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Thesis> commision1 = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionSecond")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Thesis> commision2 = new HashSet<>();
-    */
+
     /*
     private Set<Thesis> incorrection;
 

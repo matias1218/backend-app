@@ -59,14 +59,4 @@ public class StudentController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-    /*@RequestMapping(method = RequestMethod.POST, value = "/assign")
-    public ResponseEntity assignThesis(@RequestParam("studentId") int studentId, @RequestParam("thesisId") int thesisId){
-        try{
-            return new ResponseEntity<>(studentService.assignThesis((long)studentId, (long)thesisId), HttpStatus.OK);
-        }
-        catch (Exception e){
-            log.error(e.getMessage(), e);
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }*/
 }

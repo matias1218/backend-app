@@ -2,6 +2,7 @@ package cl.diinf.asignacionmemorias.mapper;
 
 import cl.diinf.asignacionmemorias.dto.NewStudentDTO;
 import cl.diinf.asignacionmemorias.dto.StudentDTO;
+import cl.diinf.asignacionmemorias.dto.StudentSimpleDTO;
 import cl.diinf.asignacionmemorias.models.Student;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,5 +27,16 @@ public class StudentMapper {
         studentDTO.setIncome(student.getIncome());
         studentDTO.setProgram(new ProgramMapper().toProgramDTO(student.getProgram()));
         return studentDTO;
+    }
+
+    public StudentSimpleDTO toStudentSimpleDTO(Student student) {
+        StudentSimpleDTO studentSimpleDTO = new StudentSimpleDTO();
+        studentSimpleDTO.setId(student.getId());
+        studentSimpleDTO.setEmail(student.getEmail());
+        studentSimpleDTO.setIncome(student.getIncome());
+        studentSimpleDTO.setName(student.getName());
+        studentSimpleDTO.setLastname(student.getLastname1());
+        studentSimpleDTO.setProgram(student.getProgram().getName());
+        return studentSimpleDTO;
     }
 }

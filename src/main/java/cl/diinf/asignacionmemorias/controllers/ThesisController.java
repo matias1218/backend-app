@@ -32,4 +32,26 @@ public class ThesisController {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/guide/{professorId}")
+    public ResponseEntity getThesesByProfessorId(@PathVariable Long professorId) {
+        try {
+            return new ResponseEntity<>(this.thesisService.getThesesByProfessorId(professorId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/commission/{professorId}")
+    public ResponseEntity getThesesByCommissionProfessor(@PathVariable Long professorId){
+        try {
+            return new ResponseEntity<>(this.thesisService.getThesesCommissionId(professorId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

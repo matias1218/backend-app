@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ThesisService {
@@ -35,7 +36,26 @@ public class ThesisService {
         {
             throw e;
         }
+    }
 
+    public List<ThesisDTO> getThesesByProfessorId(Long professorId) {
+        try {
+            return thesisDAO.findThesesByProfessorId(professorId).stream().map(x-> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList());
+        }
+        catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public List<ThesisDTO> getThesesCommissionId(Long professorId) {
+        try {
+            List<ThesisDTO> c1 = thesisDAO.findThesesByCommission1(professorId).stream().map(x-> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList());
+            List<ThesisDTO> c2 = thesisDAO.findThesesByCommission2(professorId).stream().map(x-> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList());
+            return Stream.concat(c1.stream(), c2.stream()).collect(Collectors.toList());
+        }
+        catch (Exception e) {
+            throw e;
+        }
     }
 
     /*public ThesisDTO createThesis(NewThesisDTO newThesisDTO) {
