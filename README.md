@@ -24,7 +24,7 @@
 
 - **users:** Usuarios que interactúan con el software.
     - _email:_ Correo eléctrónico asociado al usuario.
-    - _lastname:_Apellido del usuario. 
+    - _lastname:_ Apellido del usuario. 
     - _name:_ Nombre del usuario.
     - _password:_ Contraseña del usuario para autenticarse en el sistema.
 - **programs:** Programa de estudios que soporta el sistema.
@@ -75,10 +75,8 @@ Consultar a `23.20.84.8:9090`
 | `theses/topic/{topicId}`|GET| Devuelve todas las tesis de un cierto tema, dado su id|
 | `topics/all`| GET | Se obtiene todos los temas|
 | `topics/professor/{professorId}` | GET | Se obtienen los temas asociados a un profesor dado su id|
-
-
-
-
+| `user/register` | POST | Registra a un usuario en la base de datos [3]|
+| `user/login` | POST | Realiza inicio de sesión de un usuario [4]|
 
 
 
@@ -100,3 +98,16 @@ Consultar a `23.20.84.8:9090`
     	"guideId": 1,                            // id del profesor guía
     	"topicId":1                              // id del tema del estudiante
     }
+
+##### [3] Creación de un usuario
+    {
+    	"name": "Nombre usuario",
+    	"lastname": "Apellido del usuario",
+    	"email": "correo@correo.cl",
+    	"password": "contraseña del usuario"
+    }
+    
+##### [4] Inicio de sesión de un usuario
+    http://path:9090/users/login?email={correo}&password={pass}
+    // email: email asociado al usuario
+    // password: contraseña del usuario.
