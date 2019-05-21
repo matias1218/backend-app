@@ -12,6 +12,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class ProfessorDTO {
+    private Long id;
     private String name;
     private String lastname1;
     private String lastname2;

@@ -30,9 +30,11 @@ Consultar a `23.20.84.8:9090`
 | `students/{studentId}/assign/{professorId}`|GET| Asigna a la tesis del estudiante el profesor, dado sus ids. Devuelve booleano que indica si se pudo realizar la asignación.|
 | `professors/all` | GET | Devuelve una lista todos los profesores de la base de datos |
 | `professors/topic/{topicId}` | GET| Devuelve un listado de los profesores asociados a un tema en particular |
-|`theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
-|`theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
-|`theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
+| `theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
+| `theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
+| `theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
+| `topics/all`| GET | Se obtiene todos los temas|
+| `topics/professor/{professorId}`| Se obtienen los temas asociados a un profesor dado su id|
 
 
 

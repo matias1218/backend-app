@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class ProfessorMapper {
     public ProfessorDTO toProfessorDTO(Professor professor) {
         ProfessorDTO professorDTO = new ProfessorDTO();
+        professor.setId(professor.getId());
         professorDTO.setAcademic(professor.isAcademic());
         professorDTO.setEmail(professor.getEmail());
         professorDTO.setLastname1(professor.getLastname1());
