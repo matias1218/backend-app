@@ -19,6 +19,44 @@
  - [JPA](https://spring.io/projects/spring-data-jpa): Persiste los datos en `SQL` almacenados con `Java Persistence API` usando `Spring Data` e `Hibernate`.
  - [PostgreSQL](https://jdbc.postgresql.org/): Driver JDBC de PostgreSQL.
 
+
+## Entidades:
+
+- **users:** Usuarios que interactúan con el software.
+    - _email:_ Correo eléctrónico asociado al usuario.
+    - _lastname:_Apellido del usuario. 
+    - _name:_ Nombre del usuario.
+    - _password:_ Contraseña del usuario para autenticarse en el sistema.
+- **programs:** Programa de estudios que soporta el sistema.
+    - _code:_ Código de carrera. Ejemplo: 1353
+    - _name:_ Nombre de la carrera. Ejemplo: Ingeniería en Ejecución en Computación e Informática.
+- **students:** Estudiantes a los cuales se realizará seguimiento de su memoria.
+    - _email:_ Correo eléctronico del estudiante.
+    - _year_income:_ Año de ingreso del estudiante a su programa de estudios.
+    - _lastname_1:_ Apellido paterno del estudiante.
+    - _lastname_2:_ Apellido maternp del estudiante.
+    - _name:_ Nombre del estudiante.
+- **topics:** Temas que pueden ser desarrollados en una memoria. Ejemplo: Biomédica.
+    - _name:_ Nombre del tema.
+- **professors:** Profesores, los cuales pueden ser profesor guía y/o parte de una comisión de revisión.
+    - _academic:_ Booleano que indica si es académico (profesor planta).
+    - _email:_ Correo eléctronico del profesor.
+    - _lastname_1:_ Apellido paterno del profesor.
+    - _lastname_2:_ Apellido maternp del profesor.
+    - _name:_ Nombre del profesor.
+- **theses:** Memoria desarrollada por un estudiante para su titulación.
+    - _description:_ Descripción de la memoria.
+    - _title:_ Título de la memoria.
+    - _professor_c1_id:_ Id del profesor que forma parte de la comisión de revisión.
+    - _professor_c2_id:_ Id del profesor que forma parte de la comisión de revisión.
+    - _professor_guide_id:_ Id del profesor guía.
+    - _topic_id:_ Id del tema asociado a la memoria.
+    
+
+![entidades](https://i.ibb.co/xGzjJsr/diagram.png)
+
+
+
 ## Servicios
 
 Consultar a `23.20.84.8:9090`
