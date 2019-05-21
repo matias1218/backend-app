@@ -19,4 +19,7 @@ public class ProfessorDTO {
     private String email;
     private boolean academic;
     private List<TopicDTO> topics;
+    private List<ThesisSimpleDTO> guides;
+    private List<ThesisSimpleDTO> commissions;
+
 }

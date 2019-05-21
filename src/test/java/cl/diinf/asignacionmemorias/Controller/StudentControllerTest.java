@@ -50,6 +50,7 @@ public class StudentControllerTest {
         ResponseEntity<List<StudentDTO>> allStudents = new ResponseEntity<>(Collections.singletonList(student), HttpStatus.OK);
 
         given(studentController.getStudents()).willReturn(allStudents);
+
         System.out.println(allStudents);
 
         mvc.perform(get("http://localhost:9090/students/all")
