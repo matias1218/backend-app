@@ -34,7 +34,7 @@ Consultar a `23.20.84.8:9090`
 | `theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
 | `theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
 | `topics/all`| GET | Se obtiene todos los temas|
-| `topics/professor/{professorId}`| Se obtienen los temas asociados a un profesor dado su id|
+| `topics/professor/{professorId}` | GET | Se obtienen los temas asociados a un profesor dado su id|
 
 
 
