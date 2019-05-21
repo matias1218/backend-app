@@ -6,6 +6,7 @@ import cl.diinf.asignacionmemorias.models.Thesis;
 public class ThesisMapper {
     public ThesisDTO toThesisDTO(Thesis thesis) {
         ThesisDTO thesisDTO = new ThesisDTO();
+        thesisDTO.setId(thesis.getId());
         thesisDTO.setTitle(thesis.getTitle());
         thesisDTO.setDescription(thesis.getDescription());
         thesisDTO.setTopic(thesis.getTopic().getName());
