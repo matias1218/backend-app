@@ -33,6 +33,8 @@ Consultar a `23.20.84.8:9090`
 | `theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
 | `theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
 | `theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
+| `theses/create`| POST |Crea una tesis en la base de datos. Devuelve la tesis y todos sus atributos. Ver [2] para ver como funcionan los argumentos.|
+| `theses/topic/{topicId}`|GET| Devuelve todas las tesis de un cierto tema, dado su id|
 | `topics/all`| GET | Se obtiene todos los temas|
 | `topics/professor/{professorId}` | GET | Se obtienen los temas asociados a un profesor dado su id|
 
@@ -46,8 +48,17 @@ Consultar a `23.20.84.8:9090`
     {
     	"name": "Nombre ejemplo",
     	"lastname1": "Apellido 1 ejemplo",
-    	"lastname2": "Apellidos 2 ejemplo",
+    	"lastname2": "Apellido 2 ejemplo",
     	"income": 2015,
     	"email": "ejemploe@ejemplo.cl",
     	"codeProgram": 1363
+    }
+    
+##### [2] Creación de una tesis
+    {
+    	"title": "Título de la tesis",
+    	"description": "Descrićión de la tesis",
+    	"studentId": 2,                          // id del estudiante
+    	"guideId": 1,                            // id del profesor guía
+    	"topicId":1                              // id del tema del estudiante
     }

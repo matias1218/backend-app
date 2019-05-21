@@ -1,5 +1,6 @@
 package cl.diinf.asignacionmemorias.mapper;
 
+import cl.diinf.asignacionmemorias.dto.NewThesisDTO;
 import cl.diinf.asignacionmemorias.dto.ThesisDTO;
 import cl.diinf.asignacionmemorias.models.Thesis;
 
@@ -17,5 +18,12 @@ public class ThesisMapper {
             thesisDTO.setTeacherCommission2(new ProfessorMapper().toProfessorSimpleDTO(thesis.getCommissionSecond()));
         thesisDTO.setStudent(new StudentMapper().toStudentSimpleDTO(thesis.getStudent()));
         return thesisDTO;
+    }
+
+    public Thesis fromNewThesisDTO(NewThesisDTO newThesisDTO) {
+        Thesis thesis = new Thesis();
+        thesis.setTitle(newThesisDTO.getTitle());
+        thesis.setDescription(newThesisDTO.getDescription());
+        return thesis;
     }
 }

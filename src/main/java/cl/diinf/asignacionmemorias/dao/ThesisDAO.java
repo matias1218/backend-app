@@ -11,10 +11,17 @@ public interface ThesisDAO extends JpaRepository<Thesis, Long> {
     @Query("SELECT p.theses FROM Professor p WHERE p.id = :id")
     List<Thesis> findThesesByProfessorId(@Param("id") Long id);
 
-
     @Query("SELECT p.commision1 FROM Professor p WHERE p.id = :id")
     List<Thesis> findThesesByCommission1(@Param("id") Long id);
 
     @Query("SELECT p.commision2 FROM Professor p WHERE p.id = :id")
     List<Thesis> findThesesByCommission2(@Param("id") Long id);
+
+    List<Thesis> findAllByTopicId(Long id);
+
+    List<Thesis> findAllByCommissionFirstIsNullOrCommissionSecondIsNull();
+
+    List<Thesis> findAllByCommissionFirstIsNotNullOrCommissionSecondIsNotNull();
+
+
 }

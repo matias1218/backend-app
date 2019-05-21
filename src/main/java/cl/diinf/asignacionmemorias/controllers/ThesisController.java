@@ -1,5 +1,7 @@
 package cl.diinf.asignacionmemorias.controllers;
 
+import cl.diinf.asignacionmemorias.dto.NewThesisDTO;
+import cl.diinf.asignacionmemorias.dto.ThesisDTO;
 import cl.diinf.asignacionmemorias.services.ThesisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class ThesisController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/commission/{professorId}")
-    public ResponseEntity getThesesByCommissionProfessor(@PathVariable Long professorId){
+    public ResponseEntity getThesesByCommissionProfessorId(@PathVariable Long professorId){
         try {
             return new ResponseEntity<>(this.thesisService.getThesesCommissionId(professorId), HttpStatus.OK);
         }
@@ -53,5 +55,53 @@ public class ThesisController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/topic/{topicId}")
+    public ResponseEntity getThesesByTopicId(@PathVariable Long topicId){
+        try {
+            return new ResponseEntity<>(this.thesisService.getThesesByTopicId(topicId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/missing/commission")
+    public ResponseEntity getThesesMissingCommission(){
+        try {
+            return new ResponseEntity<>(this.thesisService.getThesesMissingCommission(), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/full/commission")
+    public ResponseEntity getThesesFullCommission(){
+        try {
+            return new ResponseEntity<>(this.thesisService.getThesesFullCommission(), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/create")
+    public ResponseEntity createThesis(@RequestBody NewThesisDTO newThesisDTO) {
+        try {
+            ThesisDTO thesisDTO = this.thesisService.createThesis(newThesisDTO);
+            if(thesisDTO != null)
+                return new ResponseEntity<>(thesisDTO, HttpStatus.CREATED);
+            return new ResponseEntity<>("Thesis cannot be created", HttpStatus.BAD_REQUEST);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }

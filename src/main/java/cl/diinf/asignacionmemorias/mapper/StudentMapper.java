@@ -20,6 +20,7 @@ public class StudentMapper {
 
     public StudentDTO toStudentDTO(Student student){
         StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setId(student.getId());
         studentDTO.setName(student.getName());
         studentDTO.setLastname1(student.getLastname1());
         studentDTO.setLastname2(student.getLastname2());

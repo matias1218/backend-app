@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class StudentDTO {
+    private Long id;
     private String name;
     private String lastname1;
     private String lastname2;

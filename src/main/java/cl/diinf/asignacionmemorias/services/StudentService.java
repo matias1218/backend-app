@@ -36,7 +36,7 @@ public class StudentService {
         return this.studentDAO.findByNameAndLastname1(name, lastname);
     }
 
-    private Student getStudentById(Long studentId){
+    public Student getStudentById(Long studentId){
         return studentDAO.findById(studentId).orElseThrow(()-> new RuntimeException("Student not found"));
     }
 
