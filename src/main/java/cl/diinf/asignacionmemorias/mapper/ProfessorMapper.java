@@ -18,6 +18,10 @@ public class ProfessorMapper {
         professorDTO.setLastname2(professor.getLastname2());
         professorDTO.setName(professor.getName());
         professorDTO.setTopics(professor.getTopics().stream().map(x -> new TopicMapper().toTopicDTO(x)).collect(Collectors.toList()));
+        professorDTO.setGuides(professor.getTheses().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()));
+        /*TODO
+        Add commission to professor
+        * */
         return professorDTO;
     }
 

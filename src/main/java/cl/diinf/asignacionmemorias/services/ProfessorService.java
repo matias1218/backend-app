@@ -24,6 +24,10 @@ public class ProfessorService {
         return professorDAO.findById(professorId).orElseThrow(()-> new RuntimeException("Professor not found"));
     }
 
+    public ProfessorDTO getProfessorDTOById(Long professorId) {
+        return new ProfessorMapper().toProfessorDTO(this.getProfessorById(professorId));
+    }
+
     public List<ProfessorDTO> getAllProfessors() {
         try {
             return  professorDAO.findAll().stream().map(x-> new ProfessorMapper().toProfessorDTO(x)).collect(Collectors.toList());

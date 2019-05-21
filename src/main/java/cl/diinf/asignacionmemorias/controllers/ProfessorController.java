@@ -22,7 +22,7 @@ public class ProfessorController {
     @RequestMapping(method = RequestMethod.GET, value = "/all")
     public ResponseEntity getProfessors() {
         try {
-            return new ResponseEntity<>(professorService.getAllProfessors(), HttpStatus.OK);
+            return new ResponseEntity<>(this.professorService.getAllProfessors(), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -33,7 +33,18 @@ public class ProfessorController {
     @RequestMapping(method = RequestMethod.GET, value = "/topic/{topicId}")
     public ResponseEntity getProfessorsByTopicId(@PathVariable Long topicId) {
         try {
-            return new ResponseEntity<>(professorService.getProffessorsByTopicId(topicId), HttpStatus.OK);
+            return new ResponseEntity<>(this.professorService.getProffessorsByTopicId(topicId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{professorId}")
+    public ResponseEntity getProfessorById(@PathVariable Long professorId) {
+        try {
+            return new ResponseEntity<>(this.professorService.getProfessorDTOById(professorId), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
