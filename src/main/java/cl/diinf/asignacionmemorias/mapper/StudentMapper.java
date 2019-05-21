@@ -40,4 +40,14 @@ public class StudentMapper {
         studentSimpleDTO.setProgram(student.getProgram().getName());
         return studentSimpleDTO;
     }
+
+    public StudentDTO fromNewToStudentDTO(NewStudentDTO newStudentDTO) {
+        StudentDTO studentDTO = new StudentDTO();
+        studentDTO.setName(newStudentDTO.getName());
+        studentDTO.setLastname1(newStudentDTO.getLastname1());
+        studentDTO.setLastname2(newStudentDTO.getLastname2());
+        studentDTO.setEmail(newStudentDTO.getEmail());
+        studentDTO.setIncome(newStudentDTO.getIncome());
+        return studentDTO;
+    }
 }
