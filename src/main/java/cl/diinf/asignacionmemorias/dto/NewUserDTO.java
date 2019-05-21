@@ -9,13 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class StudentDTO {
-    private Long id;
+public class NewUserDTO {
     private String name;
-    private String lastname1;
-    private String lastname2;
+    private String lastname;
     private String email;
-    private int income;
-    private ProgramDTO program;
-
+    private String password;
 }

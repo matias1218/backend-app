@@ -3,6 +3,7 @@ package cl.diinf.asignacionmemorias.services;
 import cl.diinf.asignacionmemorias.dao.ProfessorDAO;
 import cl.diinf.asignacionmemorias.dto.ProfessorDTO;
 import cl.diinf.asignacionmemorias.mapper.ProfessorMapper;
+import cl.diinf.asignacionmemorias.models.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,10 @@ public class ProfessorService {
     @Autowired
     public ProfessorService(ProfessorDAO professorDAO) {
         this.professorDAO = professorDAO;
+    }
+
+    public Professor getProfessorById(Long professorId) {
+        return professorDAO.findById(professorId).orElseThrow(()-> new RuntimeException("Professor not found"));
     }
 
     public List<ProfessorDTO> getAllProfessors() {

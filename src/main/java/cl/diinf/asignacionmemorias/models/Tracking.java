@@ -1,5 +1,6 @@
 package cl.diinf.asignacionmemorias.models;
 
+import cl.diinf.asignacionmemorias.util.Status;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +8,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tracking")
@@ -25,7 +28,8 @@ public class Tracking {
     protected ZonedDateTime creationDate;
 
     @Column(name = "status")
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Column(name = "observation")
     private String observation;
@@ -33,4 +37,9 @@ public class Tracking {
     @ManyToOne
     @JoinColumn(name = "thesis_id", foreignKey = @ForeignKey(name = "tracking_theses_fk"))
     private Thesis thesis;
+
+    @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "trackings")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<User> users = new HashSet<>();
 }

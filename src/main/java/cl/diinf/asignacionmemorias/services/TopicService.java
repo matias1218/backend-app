@@ -4,6 +4,7 @@ import cl.diinf.asignacionmemorias.dao.TopicDAO;
 import cl.diinf.asignacionmemorias.dto.TopicDTO;
 import cl.diinf.asignacionmemorias.dto.TopicDataDTO;
 import cl.diinf.asignacionmemorias.mapper.TopicMapper;
+import cl.diinf.asignacionmemorias.models.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,13 @@ public class TopicService {
 
     private final TopicDAO topicDAO;
 
-
-
     @Autowired
     public TopicService(TopicDAO topicDAO) {
         this.topicDAO = topicDAO;
+    }
+
+    public Topic getTopicById(Long topicId) {
+        return topicDAO.findById(topicId).orElseThrow(()-> new RuntimeException("Topic not found"));
     }
 
     public List<TopicDTO> getAllTopicsByProfessorId(Long topicId) {

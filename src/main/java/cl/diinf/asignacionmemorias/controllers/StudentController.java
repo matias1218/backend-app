@@ -48,7 +48,9 @@ public class StudentController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
+    /*TODO
+    * Asociar id de un usuario que ha realizado la asignación
+    * */
     @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/assign/{professorId}")
     public ResponseEntity assignComission(@PathVariable Long studentId, @PathVariable Long professorId) {
         try {
