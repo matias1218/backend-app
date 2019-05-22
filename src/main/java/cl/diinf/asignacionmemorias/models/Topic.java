@@ -28,6 +28,9 @@ public class Topic {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "description", length = 510)
+    private String description;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     @JoinTable(name = "professor_topics",
             joinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"),
