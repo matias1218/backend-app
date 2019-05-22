@@ -12,4 +12,5 @@ import lombok.ToString;
 public class TopicDTO {
     private Long id;
     private String name;
+    private String description;
 }

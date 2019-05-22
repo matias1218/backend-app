@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "thesis_types")
@@ -20,4 +22,9 @@ public class ThesisType {
     private Long id;
 
     private String type;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "commissionSecond")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Thesis> thesis = new HashSet<>();
 }

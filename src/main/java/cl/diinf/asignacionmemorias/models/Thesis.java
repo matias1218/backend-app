@@ -51,4 +51,8 @@ public class Thesis {
     @ManyToOne
     @JoinColumn(name = "professor_c2_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_commissionsecond_fk"))
     private Professor commissionSecond;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id", updatable = true, nullable = true, foreignKey = @ForeignKey(name = "thesis_type_fk"))
+    private ThesisType type;
 }

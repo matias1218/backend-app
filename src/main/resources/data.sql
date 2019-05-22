@@ -4,7 +4,7 @@ VALUES
 ('Luis', 'Perez', 'luisperez@usach.cl', '1234'),
 ('José', 'Padilla', 'josepadilla@usach.cl', '4321');
 
-INSERT INTO public.professors (academic,email,lastname_1,lastname_2,name,image) VALUES
+INSERT INTO professors (academic,email,lastname_1,lastname_2,name,image) VALUES
 (true,'leonel.medina@usach.cl','Medina','Daza','Leonel','https://www.informatica.usach.cl/multimedia/LeoMedina.jpg')
 ,(true,'gonzalo.acuna@usach.cl','Acuña','Leiva','Gonzalo','https://www.informatica.usach.cl/multimedia/academico_acuna_thumb.jpg')
 ,(true,'hector.antillanca@usach.cl','Antillanca','Espina','Héctor','https://www.informatica.usach.cl/multimedia/academico_antillanca_thumb.jpg')
@@ -139,3 +139,12 @@ VALUES
 ('almuno.1@usach.cl', 2016, 'apellido', 'apellido', 'jnombre', 1, 2 ),
 ('almuno.2@usach.cl', 2016, 'apellido', 'apellido', 'jnombre', 2, null ),
 ('almuno.3@usach.cl', 2014, 'apellido', 'apellido', 'jnombre', 2, null );
+
+
+INSERT INTO thesis_types
+(type)
+VALUES
+('Memoria'),
+('Proyecto multidipliscinario'),
+('Práctica profesional'),
+('Examen habilitante');
