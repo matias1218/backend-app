@@ -16,4 +16,5 @@ public class TopicDataDTO {
     private String name;
     private List<ThesisDTO> theses;
     private List<ProfessorSimpleDTO> professors;
+    private String description;
 }

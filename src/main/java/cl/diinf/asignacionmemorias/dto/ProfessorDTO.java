@@ -21,5 +21,5 @@ public class ProfessorDTO {
     private List<TopicDTO> topics;
     private List<ThesisSimpleDTO> guides;
     private List<ThesisSimpleDTO> commissions;
-
+    private String imageUrl;
 }

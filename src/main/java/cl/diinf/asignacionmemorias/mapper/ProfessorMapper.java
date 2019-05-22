@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class ProfessorMapper {
     public ProfessorDTO toProfessorDTO(Professor professor) {
         ProfessorDTO professorDTO = new ProfessorDTO();
-        professor.setId(professor.getId());
+        professorDTO.setId(professor.getId());
         professorDTO.setAcademic(professor.isAcademic());
         professorDTO.setEmail(professor.getEmail());
         professorDTO.setLastname1(professor.getLastname1());
@@ -19,6 +19,7 @@ public class ProfessorMapper {
         professorDTO.setName(professor.getName());
         professorDTO.setTopics(professor.getTopics().stream().map(x -> new TopicMapper().toTopicDTO(x)).collect(Collectors.toList()));
         professorDTO.setGuides(professor.getTheses().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()));
+        professorDTO.setImageUrl(professor.getUrlImage());
         /*TODO
         Add commission to professor
         * */
@@ -31,6 +32,7 @@ public class ProfessorMapper {
         professorSimpleDTO.setEmail(professor.getEmail());
         professorSimpleDTO.setId(professor.getId());
         professorSimpleDTO.setName(professor.getName() + " " + professor.getLastname1() + " " + professor.getLastname2());
+        professorSimpleDTO.setImageUrl(professor.getUrlImage());
         return professorSimpleDTO;
     }
 }

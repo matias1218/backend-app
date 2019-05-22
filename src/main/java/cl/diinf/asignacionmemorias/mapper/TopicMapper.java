@@ -13,6 +13,7 @@ public class TopicMapper {
         TopicDTO topicDTO = new TopicDTO();
         topicDTO.setId(topic.getId());
         topicDTO.setName(topic.getName());
+        topicDTO.setDescription(topicDTO.getDescription());
         return topicDTO;
     }
 
@@ -22,6 +23,7 @@ public class TopicMapper {
         topicDataDTO.setName(topic.getName());
         topicDataDTO.setProfessors(topic.getProfessors().stream().map(x-> new ProfessorMapper().toProfessorSimpleDTO(x)).collect(Collectors.toList()));
         topicDataDTO.setTheses(topic.getTheses().stream().map(x-> new ThesisMapper().toThesisDTO(x)).collect(Collectors.toList()));
+        topicDataDTO.setDescription(topic.getDescription());
         return topicDataDTO;
     }
 }

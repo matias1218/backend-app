@@ -37,6 +37,9 @@ public class Professor {
     @Column(name = "academic", nullable = false)
     private boolean academic;
 
+    @Column(name = "image")
+    private String urlImage;
+
     @ManyToMany(fetch=FetchType.LAZY,  mappedBy = "professors")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

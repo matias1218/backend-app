@@ -14,4 +14,5 @@ public class ProfessorSimpleDTO {
     private String name;
     private String email;
     private boolean academic;
+    private String imageUrl;
 }
