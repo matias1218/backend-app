@@ -51,4 +51,14 @@ public class ProfessorController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "{professorId}/putTopic/{topicId}")
+    public ResponseEntity putTopic(@PathVariable Long professorId, @PathVariable Long topicId) {
+        try {
+            return new ResponseEntity<>(this.professorService.putTopic(professorId, topicId), HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

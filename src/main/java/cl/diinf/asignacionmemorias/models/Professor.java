@@ -60,6 +60,10 @@ public class Professor {
     @EqualsAndHashCode.Exclude
     private Set<Thesis> commision2 = new HashSet<>();
 
+    public void addTopic(Topic topic) {
+        this.getTopics().add(topic);
+        topic.getProfessors().add(this);
+    }
     /*
     private Set<Thesis> incorrection;
 
