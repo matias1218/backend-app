@@ -13,7 +13,7 @@ public class TopicMapper {
         TopicDTO topicDTO = new TopicDTO();
         topicDTO.setId(topic.getId());
         topicDTO.setName(topic.getName());
-        topicDTO.setDescription(topicDTO.getDescription());
+        topicDTO.setDescription(topic.getDescription());
         return topicDTO;
     }
 
