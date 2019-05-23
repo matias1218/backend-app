@@ -20,7 +20,7 @@ public class TopicController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/all")
-    public ResponseEntity getTheses() {
+    public ResponseEntity getTopics() {
         try {
             return new ResponseEntity<>(this.topicService.getAllTopics(), HttpStatus.OK);
         }
@@ -31,12 +31,22 @@ public class TopicController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/professor/{professorId}")
-    public ResponseEntity getThesesByProfessorId(@PathVariable Long professorId) {
+    public ResponseEntity getTopicsByProfessorId(@PathVariable Long professorId) {
         try {
             return new ResponseEntity<>(this.topicService.getAllTopicsByProfessorId(professorId), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{topicId}")
+    public ResponseEntity getTopicById(@PathVariable Long topicId) {
+        try {
+            return new ResponseEntity<>(this.topicService.getTopicDTOById(topicId), HttpStatus.OK);
+        }
+        catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

@@ -26,6 +26,10 @@ public class TopicService {
         return topicDAO.findById(topicId).orElseThrow(()-> new RuntimeException("Topic not found"));
     }
 
+    public TopicDataDTO getTopicDTOById(Long topicId) {
+        return new TopicMapper().toTopicDataDTO(this.getTopicById(topicId));
+    }
+
     public List<TopicDTO> getAllTopicsByProfessorId(Long topicId) {
         return this.topicDAO.findTopicsByProfessorId(topicId).stream().map(x-> new TopicMapper().toTopicDTO(x)).collect(Collectors.toList());
     }

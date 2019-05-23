@@ -4,7 +4,7 @@ VALUES
 ('Luis', 'Perez', 'luisperez@usach.cl', '1234'),
 ('José', 'Padilla', 'josepadilla@usach.cl', '4321');
 
-INSERT INTO public.professors (academic,email,lastname_1,lastname_2,name,image) VALUES 
+INSERT INTO professors (academic,email,lastname_1,lastname_2,name,image) VALUES
 (true,'leonel.medina@usach.cl','Medina','Daza','Leonel','https://www.informatica.usach.cl/multimedia/LeoMedina.jpg')
 ,(true,'gonzalo.acuna@usach.cl','Acuña','Leiva','Gonzalo','https://www.informatica.usach.cl/multimedia/academico_acuna_thumb.jpg')
 ,(true,'hector.antillanca@usach.cl','Antillanca','Espina','Héctor','https://www.informatica.usach.cl/multimedia/academico_antillanca_thumb.jpg')
@@ -125,20 +125,30 @@ VALUES
 (6,4);
 
 
-INSERT INTO theses
-(description, title, professor_guide_id, topic_id)
-VALUES
-('Descripcion...', 'El titulo', 1, 1),
-('Descripcion...', 'El titulo', 2, 2);
+INSERT INTO theses (description,title,professor_c1_id,professor_c2_id,professor_guide_id,topic_id,type_id) VALUES
+('Descripcion...','El titulo',NULL,NULL,2,2,NULL)
+,('Memoria bacan','la memoria',7,50,2,2,NULL)
+,('Machine learning pulento dsada','Modelos predictivos',10,13,4,1,NULL)
+,('Descripcion...','El titulo',2,20,1,1,NULL)
+,('fñljkfljaskfda','kjdasklda',NULL,NULL,7,5,NULL)
+,('dlfkaljjdlk','jkkljjkkj',1,NULL,15,3,NULL)
+,('sasda','aafafsa',6,NULL,7,4,NULL)
+,('dfdsf','fsdfsd',7,8,9,3,NULL)
+,('daskd','dkljadjkl',8,3,20,4,NULL)
+;
 
 
-INSERT INTO students
-(email, year_income, lastname_1, lastname_2, name, program_id, thesis_id)
-VALUES
-('javier.arredondo.c@usach.cl', 2015, 'arredondo', 'contreras', 'javier', 1, 1),
-('almuno.1@usach.cl', 2016, 'apellido', 'apellido', 'jnombre', 1, 2 ),
-('almuno.2@usach.cl', 2016, 'apellido', 'apellido', 'jnombre', 2, null ),
-('almuno.3@usach.cl', 2014, 'apellido', 'apellido', 'jnombre', 2, null );
+INSERT INTO students (email,year_income,lastname_1,lastname_2,name,program_id,thesis_id) VALUES
+('javier.arredondo.c@usach.cl',2015,'arredondo','contreras','javier',1,1)
+,('almuno.1@usach.cl',2016,'apellido','apellido','jnombre',1,2)
+,('almuno.2@usach.cl',2016,'apellido','apellido','jnombre',2,3)
+,('almuno.3@usach.cl',2014,'apellido','apellido','jnombre',2,4)
+,('paloma.zamorano@usach.cl',2015,'zamorano','dasd','paloma',2,5)
+,('daddy.yankee@usach.cl',2012,'dada','dasdas','daddy',1,6)
+,('ejemplo@ejemplo.cl',3266,'dasf','fafa','fafsfs',1,7)
+,('fsfasfsafsa',2014,'qwrefe','kljfshjf','hkljkl',2,8)
+,('NickyJam@shishigang.cl',838,'Jam','Flow','Nicky',1,9)
+;
 
 
 INSERT INTO thesis_types
