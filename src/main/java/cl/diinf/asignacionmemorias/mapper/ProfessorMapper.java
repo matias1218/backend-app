@@ -2,10 +2,13 @@ package cl.diinf.asignacionmemorias.mapper;
 
 import cl.diinf.asignacionmemorias.dto.ProfessorDTO;
 import cl.diinf.asignacionmemorias.dto.ProfessorSimpleDTO;
+import cl.diinf.asignacionmemorias.dto.ThesisSimpleDTO;
 import cl.diinf.asignacionmemorias.models.Professor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 public class ProfessorMapper {
@@ -20,9 +23,9 @@ public class ProfessorMapper {
         professorDTO.setTopics(professor.getTopics().stream().map(x -> new TopicMapper().toTopicDTO(x)).collect(Collectors.toList()));
         professorDTO.setGuides(professor.getTheses().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()));
         professorDTO.setImageUrl(professor.getUrlImage());
-        /*TODO
-        Add commission to professor
-        * */
+        professorDTO.setCommissions(Stream.concat(professor.getCommision1().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()).stream(),
+                professor.getCommision2().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()).stream()).
+                collect(Collectors.toList()));
         return professorDTO;
     }
 
@@ -33,6 +36,10 @@ public class ProfessorMapper {
         professorSimpleDTO.setId(professor.getId());
         professorSimpleDTO.setName(professor.getName() + " " + professor.getLastname1() + " " + professor.getLastname2());
         professorSimpleDTO.setImageUrl(professor.getUrlImage());
+        // To set commission
+        professorSimpleDTO.setCommissions(Stream.concat(professor.getCommision1().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()).stream(),
+                professor.getCommision2().stream().map(x -> new ThesisMapper().toThesisSimpleDTO(x)).collect(Collectors.toList()).stream()).
+                collect(Collectors.toList()));
         return professorSimpleDTO;
     }
 }
