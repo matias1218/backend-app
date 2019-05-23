@@ -53,7 +53,7 @@
     - _topic_id:_ Id del tema asociado a la memoria.
     
 
-![entidades](https://i.ibb.co/xGzjJsr/diagram.png)
+![entidades](https://i.ibb.co/WzdyJBm/datos.png)
 
 
 
@@ -68,11 +68,16 @@ Consultar a `23.20.84.8:9090`
 | `students/{studentId}/assign/{professorId}`|GET| Asigna a la tesis del estudiante el profesor, dado sus ids. Devuelve booleano que indica si se pudo realizar la asignación.|
 | `professors/all` | GET | Devuelve una lista todos los profesores de la base de datos |
 | `professors/topic/{topicId}` | GET| Devuelve un listado de los profesores asociados a un tema en particular |
+| `professors/{professorId}` | GET| Devuelve a un profesor en particular |
+| `professors/{professorId}/putTopic/{topicId}` | GET| Agrega un tema/área a un profesor, devuelve json de profesor actualizado. |
+
 | `theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
 | `theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
 | `theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
 | `theses/create`| POST |Crea una tesis en la base de datos. Devuelve la tesis y todos sus atributos. Ver [2] para ver como funcionan los argumentos.|
 | `theses/topic/{topicId}`|GET| Devuelve todas las tesis de un cierto tema, dado su id|
+| `theses/missing/commission`|GET| Devuelve todas las tesis que su comisión correctora no estén connstituidas.|
+| `theses/full/commission`|GET| Devuelve todas las tesis que tengan comisión correctora constituida|
 | `topics/all`| GET | Se obtiene todos los temas|
 | `topics/professor/{professorId}` | GET | Se obtienen los temas asociados a un profesor dado su id|
 | `user/register` | POST | Registra a un usuario en la base de datos [3]|
