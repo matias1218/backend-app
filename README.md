@@ -70,7 +70,6 @@ Consultar a `23.20.84.8:9090`
 | `professors/topic/{topicId}` | GET| Devuelve un listado de los profesores asociados a un tema en particular |
 | `professors/{professorId}` | GET| Devuelve a un profesor en particular |
 | `professors/{professorId}/putTopic/{topicId}` | GET| Agrega un tema/área a un profesor, devuelve json de profesor actualizado. |
-
 | `theses/all`| GET| Devuelve un listado de todas las tesis que etsán en la base de datos|
 | `theses/guide/{professorId}`|GET|Devuelve todas las tesis en la que un profesor ha sido guía, dado su id.|
 | `theses/commission/{professorId}`|GET|Devuelve todas las tesis en que un profesor ha sido parte de la comisión, dado su id|
