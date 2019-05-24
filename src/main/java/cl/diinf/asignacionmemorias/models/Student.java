@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -38,11 +40,10 @@ public class Student {
     @JoinColumn(name = "program_id", foreignKey = @ForeignKey(name = "programs_student_fk"))
     private Program program;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="thesis_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Thesis thesis;
+    private Set<Thesis> theses = new HashSet<>();
 
     public void addProgram(Program program) {
         this.setProgram(program);
@@ -50,6 +51,6 @@ public class Student {
     }
 
     public void assignThesis(Thesis thesis){
-        this.setThesis(thesis);
+        this.theses.add(thesis);
     }
 }

@@ -138,16 +138,16 @@ INSERT INTO theses (description,title,professor_c1_id,professor_c2_id,professor_
 ;
 
 
-INSERT INTO students (email,year_income,lastname_1,lastname_2,name,program_id,thesis_id) VALUES
-('javier.arredondo.c@usach.cl',2015,'arredondo','contreras','javier',1,1)
-,('almuno.1@usach.cl',2016,'apellido','apellido','jnombre',1,2)
-,('almuno.2@usach.cl',2016,'apellido','apellido','jnombre',2,3)
-,('almuno.3@usach.cl',2014,'apellido','apellido','jnombre',2,4)
-,('paloma.zamorano@usach.cl',2015,'zamorano','dasd','paloma',2,5)
-,('daddy.yankee@usach.cl',2012,'dada','dasdas','daddy',1,6)
-,('ejemplo@ejemplo.cl',3266,'dasf','fafa','fafsfs',1,7)
-,('fsfasfsafsa',2014,'qwrefe','kljfshjf','hkljkl',2,8)
-,('NickyJam@shishigang.cl',838,'Jam','Flow','Nicky',1,9)
+INSERT INTO students (email,year_income,lastname_1,lastname_2,name,program_id) VALUES
+('javier.arredondo.c@usach.cl',2015,'arredondo','contreras','javier',1)
+,('almuno.1@usach.cl',2016,'apellido','apellido','jnombre',1)
+,('almuno.2@usach.cl',2016,'apellido','apellido','jnombre',2)
+,('almuno.3@usach.cl',2014,'apellido','apellido','jnombre',2)
+,('paloma.zamorano@usach.cl',2015,'zamorano','dasd','paloma',2)
+,('daddy.yankee@usach.cl',2012,'dada','dasdas','daddy',1)
+,('ejemplo@ejemplo.cl',3266,'dasf','fafa','fafsfs',1)
+,('fsfasfsafsa',2014,'qwrefe','kljfshjf','hkljkl',2)
+,('NickyJam@shishigang.cl',838,'Jam','Flow','Nicky',1)
 ;
 
 

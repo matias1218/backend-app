@@ -28,7 +28,8 @@ public class Thesis {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToOne(fetch=FetchType.LAZY, mappedBy = "thesis", cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", foreignKey = @ForeignKey(name = "student_theses_fk"))
     private Student student;
 
     @ManyToOne(optional = false)

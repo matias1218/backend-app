@@ -24,7 +24,7 @@ public class StudentService {
     private StudentDAO studentDAO;
     private ProgramDAO programDAO;
     private ProfessorDAO professorDAO;
-
+    private ThesisService thesisService;
     @Autowired
     public StudentService(StudentDAO studentDAO, ProgramDAO programDAO, ProfessorDAO professorDAO){
         this.studentDAO = studentDAO;
@@ -78,23 +78,23 @@ public class StudentService {
         }
     }
 
-    public boolean assignCommission(Long studentId, Long professorId) {
+    public boolean assignCommission(Long studentId, Long professorId, Long thesisId) {
         try {
             Student student = this.getStudentById(studentId);
+            Thesis thesis = thesisService.getThesisById(thesisId);
             Professor professor = this.professorDAO.findById(professorId).orElseThrow(()-> new RuntimeException("Professor not found"));
-            Thesis thesis = student.getThesis();
             if(thesis.getGuide().getId().equals(professorId)) {
                 return false;
             }
             else if(thesis.getCommissionFirst() == null) {
                 if(thesis.getCommissionSecond() != null && thesis.getCommissionSecond().getId().equals(professorId))
                     return false;
-                student.getThesis().setCommissionFirst(professor);
+                thesis.setCommissionFirst(professor);
             }
             else if(thesis.getCommissionSecond() == null) {
                 if(thesis.getCommissionFirst() != null && thesis.getCommissionFirst().getId().equals(professorId))
                     return false;
-                student.getThesis().setCommissionSecond(professor);
+                thesis.setCommissionSecond(professor);
             }
             else
                 return false;

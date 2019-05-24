@@ -51,10 +51,10 @@ public class StudentController {
     /*TODO
     * Asociar id de un usuario que ha realizado la asignación
     * */
-    @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/assign/{professorId}")
-    public ResponseEntity assignComission(@PathVariable Long studentId, @PathVariable Long professorId) {
+    @RequestMapping(method = RequestMethod.GET, path = "/{studentId}/thesis/{thesisId}/assign/{professorId}")
+    public ResponseEntity assignComission(@PathVariable Long studentId, @PathVariable Long professorId, @PathVariable Long thesisId) {
         try {
-            return new ResponseEntity<>(this.studentService.assignCommission(studentId, professorId), HttpStatus.OK);
+            return new ResponseEntity<>(this.studentService.assignCommission(studentId, professorId, thesisId), HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
